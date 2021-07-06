@@ -14,8 +14,52 @@ The programs that can currently be built with this package are:
 | pair     | compare two paired variables                            |      90% |
 | maketrix | format text file into columns                           |     100% |
 
-Note that this is a **work in progress**. More tools are planned (see below)
+Examples:
 
+```
+$ rnorm -m 10 -s 3 30  | stats
+n=30
+min=4.208317
+max=14.964540
+median=9.248378
+mean=10.035583
+sd=3.033801
+absdev=2.535955
+mad=3.137011
+skew=0.214240
+kurtosis=-1.120684
+conf_int_95_inf=8.902743
+conf_int_95_sup=11.168423
+
+$ rnorm 200 | hist
+-2.22    3 ***
+-1.68   12 ************
+-1.14   21 *********************
+-0.61   36 ************************************
+-0.07   48 ************************************************
+ 0.47   39 ***************************************
+ 1.01   26 **************************
+ 1.55    9 *********
+ 2.09    3 ***
+ 2.62    2 **
+  
+$ rnorm -m 10 -s 3 30  | maketrix 2 | pair
+Analysis for 15 points:
+                   Column1            Column2           Difference
+Means              11.1890            10.5444           -0.6446
+SDs                 3.1579             2.8622            4.1277
+t(14)              13.7228            14.2683           -0.6048
+p                1.642e-09          9.845e-10             0.555
+
+Correlation         r-squared            t(13)                p
+     0.0623            0.0039           0.2251           0.8254
+  Intercept             Slope
+     9.9126            0.0565
+
+```
+
+Note that this is a **work in progress**. More tools are planned (suggestions
+and contributions are welcome!)
 
 
 ## A predecessor: |STAT 
