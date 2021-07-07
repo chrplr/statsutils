@@ -5,14 +5,16 @@ manipulations and analyses from data stored in text files.
 
 The programs that can currently be built with this package are:
 
-| name     | purpose                                                 | progress |
-| -----    | ---------                                               | -------- |
-| runif    | generate random numbers uniformly on [0, 1)             |     100% |
-| rnorm    | generate random numbers following a normal distribution |     100% |
-| hist     | create an histogram                                     |      50% |
-| stats    | basic descriptive statistics                            |      90% |
-| pair     | compare two paired variables                            |      90% |
-| maketrix | format text file into columns                           |     100% |
+| name      | purpose                                                 | progress |
+| -----     | ---------                                               | -------- |
+| runif     | generate random numbers uniformly on [0, 1)             |     100% |
+| rnorm     | generate random numbers following a normal distribution |     100% |
+| hist      | create an histogram                                     |      50% |
+| stats     | basic descriptive statistics                            |      90% |
+| pair      | compare two paired variables                            |      90% |
+| maketrix  | format text file into columns                           |     100% |
+| transpose | transpose a matrix                                      |      80% |
+
 
 Examples:
 
