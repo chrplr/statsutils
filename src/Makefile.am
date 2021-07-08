@@ -1,4 +1,4 @@
-bin_PROGRAMS = hist maketrix pair rnorm runif stats tokenize
+bin_PROGRAMS = hist maketrix pair rnorm runif randint stats tokenize
 hist_SOURCES = hist.c vector.c  vector.h
 maketrix_SOURCES = maketrix.c
 pair_SOURCES = pair.c   vector.c  vector.h

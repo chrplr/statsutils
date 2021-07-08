@@ -88,7 +88,8 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 bin_PROGRAMS = hist$(EXEEXT) maketrix$(EXEEXT) pair$(EXEEXT) \
-	rnorm$(EXEEXT) runif$(EXEEXT) stats$(EXEEXT) tokenize$(EXEEXT)
+	rnorm$(EXEEXT) runif$(EXEEXT) randint$(EXEEXT) stats$(EXEEXT) \
+	tokenize$(EXEEXT)
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -111,6 +112,9 @@ maketrix_LDADD = $(LDADD)
 am_pair_OBJECTS = pair.$(OBJEXT) vector.$(OBJEXT)
 pair_OBJECTS = $(am_pair_OBJECTS)
 pair_LDADD = $(LDADD)
+randint_SOURCES = randint.c
+randint_OBJECTS = randint.$(OBJEXT)
+randint_LDADD = $(LDADD)
 am_rnorm_OBJECTS = rnorm.$(OBJEXT)
 rnorm_OBJECTS = $(am_rnorm_OBJECTS)
 rnorm_LDADD = $(LDADD)
@@ -167,9 +171,9 @@ DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = ./$(DEPDIR)/hist.Po ./$(DEPDIR)/maketrix.Po \
-	./$(DEPDIR)/pair.Po ./$(DEPDIR)/rnorm.Po ./$(DEPDIR)/runif.Po \
-	./$(DEPDIR)/stats.Po ./$(DEPDIR)/tokenize.Po \
-	./$(DEPDIR)/vector.Po
+	./$(DEPDIR)/pair.Po ./$(DEPDIR)/randint.Po \
+	./$(DEPDIR)/rnorm.Po ./$(DEPDIR)/runif.Po ./$(DEPDIR)/stats.Po \
+	./$(DEPDIR)/tokenize.Po ./$(DEPDIR)/vector.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -184,10 +188,10 @@ am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
 SOURCES = $(hist_SOURCES) $(maketrix_SOURCES) $(pair_SOURCES) \
-	$(rnorm_SOURCES) $(runif_SOURCES) $(stats_SOURCES) \
+	randint.c $(rnorm_SOURCES) $(runif_SOURCES) $(stats_SOURCES) \
 	$(tokenize_SOURCES)
 DIST_SOURCES = $(hist_SOURCES) $(maketrix_SOURCES) $(pair_SOURCES) \
-	$(rnorm_SOURCES) $(runif_SOURCES) $(stats_SOURCES) \
+	randint.c $(rnorm_SOURCES) $(runif_SOURCES) $(stats_SOURCES) \
 	$(tokenize_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
@@ -414,6 +418,10 @@ pair$(EXEEXT): $(pair_OBJECTS) $(pair_DEPENDENCIES) $(EXTRA_pair_DEPENDENCIES)
 	@rm -f pair$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(pair_OBJECTS) $(pair_LDADD) $(LIBS)
 
+randint$(EXEEXT): $(randint_OBJECTS) $(randint_DEPENDENCIES) $(EXTRA_randint_DEPENDENCIES) 
+	@rm -f randint$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(randint_OBJECTS) $(randint_LDADD) $(LIBS)
+
 rnorm$(EXEEXT): $(rnorm_OBJECTS) $(rnorm_DEPENDENCIES) $(EXTRA_rnorm_DEPENDENCIES) 
 	@rm -f rnorm$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(rnorm_OBJECTS) $(rnorm_LDADD) $(LIBS)
@@ -474,6 +482,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hist.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/maketrix.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pair.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/randint.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/rnorm.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/runif.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stats.Po@am__quote@ # am--include-marker
@@ -630,6 +639,7 @@ distclean: distclean-am
 		-rm -f ./$(DEPDIR)/hist.Po
 	-rm -f ./$(DEPDIR)/maketrix.Po
 	-rm -f ./$(DEPDIR)/pair.Po
+	-rm -f ./$(DEPDIR)/randint.Po
 	-rm -f ./$(DEPDIR)/rnorm.Po
 	-rm -f ./$(DEPDIR)/runif.Po
 	-rm -f ./$(DEPDIR)/stats.Po
@@ -683,6 +693,7 @@ maintainer-clean: maintainer-clean-am
 		-rm -f ./$(DEPDIR)/hist.Po
 	-rm -f ./$(DEPDIR)/maketrix.Po
 	-rm -f ./$(DEPDIR)/pair.Po
+	-rm -f ./$(DEPDIR)/randint.Po
 	-rm -f ./$(DEPDIR)/rnorm.Po
 	-rm -f ./$(DEPDIR)/runif.Po
 	-rm -f ./$(DEPDIR)/stats.Po
